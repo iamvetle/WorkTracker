@@ -112,6 +112,5 @@ except KeyboardInterrupt:
     os.system(clear_command)
     print(turnColor.change(f"(SCORE: {score}) ", "YELLOW"), end="")
     print(turnColor.change(f"\tYou worked for {score * 25} min", "BLUE"))
-    input()
     time.sleep(0.25)
     sys.exit()
