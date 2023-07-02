@@ -1,9 +1,18 @@
-import time, winsound, sys, os
+import time, winsound, sys, os, platform
 from colorama import Fore, init
 
 init()
 
 score = 0
+
+os_system = platform.system()
+clear_command = ""
+
+if os_system == "Windows":
+    clear_command = "cls"
+else:
+    clear_command = "clear"
+
 
 # CLASSES
 class turnColor:
@@ -48,7 +57,8 @@ try:
         while True:
             time.sleep(60)
             countdown -= 1
-            os.system("cls")
+            
+            os.system(clear_command)
             
             print(turnColor.change(f"{mode}: ", color_choice), end="")
             print(f"{countdown} min left ", end="")
@@ -60,7 +70,7 @@ try:
                   winsound.Beep(2450, 100)
                 if mode == "WORK":
                    score += 1
-                os.system("cls")
+                os.system(clear_command)
                 print(turnColor.change(f"{mode} ", color_choice), end="")
                 print(f"{countdown} min left ", end="")
                 print(turnColor.change(f"\t(SCORE: {score})", "YELLOW"))
@@ -69,10 +79,10 @@ try:
                 return
 
     # Beginning
-    os.system("cls")
+    os.system(clear_command)
     input(turnColor.change(f"Press ENTER to start '{turnColor.change('The Work Tracker', 'RED')}' ", "CYAN"))
     time.sleep(0.5)
-    os.system("cls")
+    os.system(clear_command)
     while True:
         for times in range(1,3):
             timer(25)
@@ -80,26 +90,26 @@ try:
             input(turnColor.change("\n25 min work finished. Press ENTER to start a short 5 min break.", "BLUE"))
             
             time.sleep(1)
-            os.system("cls")
+            os.system(clear_command)
             timer(5)
             input(turnColor.change("\n5 min break finished. Press ENTER to start a 25 min work session.", "BLUE"))
             
             time.sleep(1)
-            os.system("cls")
+            os.system(clear_command)
         timer(25)
         input(turnColor.change("\n25 min work finished. Press ENTER to start a long 15 min break.", "BLUE"))
         time.sleep(1)
-        os.system("cls")
+        os.system(clear_command)
         
         timer(15)
         time.sleep(1)
-        os.system("cls")
+        os.system(clear_command)
         input(turnColor.change("\n15 min long break finished. Press ENTER to start a 25 min work session.", "BLUE"))
         time.sleep(1)
-        os.system("cls")        
+        os.system(clear_command)        
 except KeyboardInterrupt:
     time.sleep(0.5)
-    os.system("cls")
+    os.system(clear_command)
     print(turnColor.change(f"(SCORE: {score}) ", "YELLOW"), end="")
     print(turnColor.change(f"\tYou worked for {score * 25} min", "BLUE"))
     input()
