@@ -1,4 +1,4 @@
-import time, winsound, sys, os, platform
+import time, winsound, sys, os, platform  # noqa: E401
 import turnColor
 
 score = 0
@@ -59,31 +59,31 @@ try:
 
     # Beginning
     os.system(clear_command)
-    input(turnColor.Change(f"Press ENTER to start '{turnColor.Change('The Work Tracker', 'RED')}' ", "CYAN"))
+    input(turnColor.Change(f"Press ENTER to start '{turnColor.Change('The Work Tracker', 'RED')}' ", "CYAN"))  # noqa: E501
     time.sleep(0.5)
     os.system(clear_command)
     while True:
         for times in range(1,3):
             timer(25)
             time.sleep(1)            
-            input(turnColor.Change("\n25 min work finished. Press ENTER to start a short 5 min break.", "BLUE"))
+            input(turnColor.Change("\n25 min work finished. Press ENTER to start a short 5 min break.", "BLUE"))  # noqa: E501
             
             time.sleep(1)
             os.system(clear_command)
             timer(5)
-            input(turnColor.Change("\n5 min break finished. Press ENTER to start a 25 min work session.", "BLUE"))
+            input(turnColor.Change("\n5 min break finished. Press ENTER to start a 25 min work session.", "BLUE"))  # noqa: E501
             
             time.sleep(1)
             os.system(clear_command)
         timer(25)
-        input(turnColor.Change("\n25 min work finished. Press ENTER to start a long 15 min break.", "BLUE"))
+        input(turnColor.Change("\n25 min work finished. Press ENTER to start a long 15 min break.", "BLUE"))  # noqa: E501
         time.sleep(1)
         os.system(clear_command)
         
         timer(15)
         time.sleep(1)
         os.system(clear_command)
-        input(turnColor.Change("\n15 min long break finished. Press ENTER to start a 25 min work session.", "BLUE"))
+        input(turnColor.Change("\n15 min long break finished. Press ENTER to start a 25 min work session.", "BLUE"))  # noqa: E501
         time.sleep(1)
         os.system(clear_command)        
 except KeyboardInterrupt:
