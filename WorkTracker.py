@@ -1,7 +1,5 @@
 import time, winsound, sys, os, platform
-from colorama import Fore, init
-
-init()
+import turnColor
 
 score = 0
 
@@ -12,25 +10,6 @@ if os_system == "Windows":
     clear_command = "cls"
 else:
     clear_command = "clear"
-
-
-# CLASSES
-class turnColor:
-        @staticmethod # Edits color of text
-        def change(text, choice):
-            color_list = ["RED", "BLACK", "BLUE", "CYAN", "GREEN", "MAGNETA", "WHITE", "YELLOW"]
-            choice = choice.upper()
-            if choice in color_list:
-                color_text = getattr(Fore, choice) + text + Fore.RESET
-                return color_text
-        
-        @staticmethod # Prints text with color
-        def send(text, choice):
-            color_list = ["RED", "BLACK", "BLUE", "CYAN", "GREEN", "MAGNETA", "WHITE", "YELLOW"]
-            choice = choice.upper()
-            if choice in color_list:
-                color_text = getattr(Fore, choice) + text + Fore.RESET
-                print(color_text)
 
 try:   
     def timer(countdown):
@@ -50,9 +29,9 @@ try:
             end_message = "Break over!"
             color_choice = "GREEN"
 
-        print(turnColor.change(f"{mode}: ", color_choice), end="")
+        print(turnColor.Change(f"{mode}: ", color_choice), end="")
         print(f"{countdown} min left ", end="")
-        print(turnColor.change(f"\t(SCORE: {score})", "YELLOW"))
+        print(turnColor.Change(f"\t(SCORE: {score})", "YELLOW"))
         time.sleep(0.5)
         while True:
             time.sleep(60)
@@ -60,9 +39,9 @@ try:
             
             os.system(clear_command)
             
-            print(turnColor.change(f"{mode}: ", color_choice), end="")
+            print(turnColor.Change(f"{mode}: ", color_choice), end="")
             print(f"{countdown} min left ", end="")
-            print(turnColor.change(f"\t(SCORE: {score})", "YELLOW"))
+            print(turnColor.Change(f"\t(SCORE: {score})", "YELLOW"))
 
             if countdown == 0:
                 time.sleep(1)
@@ -71,46 +50,46 @@ try:
                 if mode == "WORK":
                    score += 1
                 os.system(clear_command)
-                print(turnColor.change(f"{mode} ", color_choice), end="")
+                print(turnColor.Change(f"{mode} ", color_choice), end="")
                 print(f"{countdown} min left ", end="")
-                print(turnColor.change(f"\t(SCORE: {score})", "YELLOW"))
+                print(turnColor.Change(f"\t(SCORE: {score})", "YELLOW"))
                 
                 print("\n", end_message, sep="")
                 return
 
     # Beginning
     os.system(clear_command)
-    input(turnColor.change(f"Press ENTER to start '{turnColor.change('The Work Tracker', 'RED')}' ", "CYAN"))
+    input(turnColor.Change(f"Press ENTER to start '{turnColor.Change('The Work Tracker', 'RED')}' ", "CYAN"))
     time.sleep(0.5)
     os.system(clear_command)
     while True:
         for times in range(1,3):
             timer(25)
             time.sleep(1)            
-            input(turnColor.change("\n25 min work finished. Press ENTER to start a short 5 min break.", "BLUE"))
+            input(turnColor.Change("\n25 min work finished. Press ENTER to start a short 5 min break.", "BLUE"))
             
             time.sleep(1)
             os.system(clear_command)
             timer(5)
-            input(turnColor.change("\n5 min break finished. Press ENTER to start a 25 min work session.", "BLUE"))
+            input(turnColor.Change("\n5 min break finished. Press ENTER to start a 25 min work session.", "BLUE"))
             
             time.sleep(1)
             os.system(clear_command)
         timer(25)
-        input(turnColor.change("\n25 min work finished. Press ENTER to start a long 15 min break.", "BLUE"))
+        input(turnColor.Change("\n25 min work finished. Press ENTER to start a long 15 min break.", "BLUE"))
         time.sleep(1)
         os.system(clear_command)
         
         timer(15)
         time.sleep(1)
         os.system(clear_command)
-        input(turnColor.change("\n15 min long break finished. Press ENTER to start a 25 min work session.", "BLUE"))
+        input(turnColor.Change("\n15 min long break finished. Press ENTER to start a 25 min work session.", "BLUE"))
         time.sleep(1)
         os.system(clear_command)        
 except KeyboardInterrupt:
     time.sleep(0.5)
     os.system(clear_command)
-    print(turnColor.change(f"(SCORE: {score}) ", "YELLOW"), end="")
-    print(turnColor.change(f"\tYou worked for {score * 25} min", "BLUE"))
+    print(turnColor.Change(f"(SCORE: {score}) ", "YELLOW"), end="")
+    print(turnColor.Change(f"\tYou worked for {score * 25} min", "BLUE"))
     time.sleep(0.25)
     sys.exit()
