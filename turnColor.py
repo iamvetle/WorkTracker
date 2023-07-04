@@ -23,10 +23,11 @@ def Send(text, **kwargs):
             print(color_text)
         else:
             print("Error: That color doesn't exist..")   
-            
-# Send("Example", color="red")
-# Send("Example", color="bruwn")
-# test = Turn("Example", color="green")
-# test2 = Turn("Example", color="yullow")
-# print(test)
-# print(test2)
+
+if __name__ == "__main__":            
+    Send("Example", color="red")
+    Send("Example", color="bruwn")
+    test = Turn("Example", color="green")
+    test2 = Turn("Example", color="yullow")
+    print(test)
+    print(test2)
