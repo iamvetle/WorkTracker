@@ -1,5 +1,13 @@
 import time, winsound, sys, os, platform
-from turnColor import Turn, Send
+from turnColor import Turn
+
+def hide_cursor():
+    sys.stdout.write("\033[?25l")
+    sys.stdout.flush()
+
+def show_cursor():
+    sys.stdout.write("\033[?25h")
+    sys.stdout.flush()
 
 score = 0
 
@@ -11,7 +19,8 @@ if os_system == "Windows":
 else:
     clear_command = "clear"
 
-try:   
+try:
+    hide_cursor()   
     def timer(countdown):
         # 25, 5 or 15
         global score
@@ -45,8 +54,9 @@ try:
 
             if countdown == 0:
                 time.sleep(1)
-                for times in range(0,4):
+                for times in range(1,4):
                   winsound.Beep(2450, 100)
+                  time.sleep(0.50)
                 if mode == "WORK":
                    score += 1
                 os.system(clear_command)
@@ -91,5 +101,6 @@ except KeyboardInterrupt:
     os.system(clear_command)
     print(Turn(f"(SCORE: {score}) ", color="yellow"), end="")
     print(Turn(f"\tYou worked for {score * 25} min", color="blue"))
+    show_cursor()
     time.sleep(0.25)
     sys.exit()
