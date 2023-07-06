@@ -1,5 +1,6 @@
 import time, winsound, sys, os, platform
 from turnColor import Turn
+from playsound import playsound
 
 def hide_cursor():
     sys.stdout.write("\033[?25l")
@@ -9,11 +10,13 @@ def show_cursor():
     sys.stdout.write("\033[?25h")
     sys.stdout.flush()
 
+# Global variables
 score = 0
-
+bell_sound = r"g:\Min disk\VisualStudioCode\GitProjects\WorkTracker\bell.mp3"
 os_system = platform.system()
 clear_command = ""
 
+# Check OS
 if os_system == "Windows":
     clear_command = "cls"
 else:
@@ -24,8 +27,8 @@ try:
     def timer(countdown):
         # 25, 5 or 15
         global score
-        winsound.Beep(2450, 100)
-        
+        playsound(bell_sound)
+                
         mode = ""
         end_message = ""
         
@@ -54,9 +57,8 @@ try:
 
             if countdown == 0:
                 time.sleep(1)
-                for times in range(1,4):
-                  winsound.Beep(2450, 100)
-                  time.sleep(0.50)
+                playsound(bell_sound)
+                time.sleep(0.50)
                 if mode == "WORK":
                    score += 1
                 os.system(clear_command)
